@@ -3,6 +3,8 @@ package me.pokerman99.ServerSuiteMK2.forms;
 import me.pokerman99.ServerSuiteMK2.Encrypt;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class loginForm {
     private JTextField userNameField1;
@@ -16,15 +18,18 @@ public class loginForm {
         });
 
 
-        loginButton.addActionListener(e -> {
-            String user = userNameField1.getText();
-            String encrypted = Encrypt.encrypt(user);
-            String decrypted = Encrypt.decrypt(encrypted);
-
-            System.out.print("OG:\t"+ user);
-            System.out.print("\nEncrypted:\t"+ encrypted);
-            System.out.print("\nDecrypted:\t"+ decrypted);
+        loginButton.addActionListener(e -> login(e));
+        passwordField1.addActionListener(e -> {
 
         });
+    }
+
+    public boolean login(ActionEvent event) {
+        String user = userNameField1.getText();
+        String encryptUser = Encrypt.encrypt(userNameField1.getText());
+        String encryptPassword = Encrypt.encrypt(passwordField1.getPassword().toString());
+
+
+        return false;
     }
 }
